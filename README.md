@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 CakePHP
 =======
 
@@ -42,9 +41,3 @@ Get Support!
 [![Bake Status](https://secure.travis-ci.org/cakephp/cakephp.png?branch=master)](http://travis-ci.org/cakephp/cakephp)
 
 ![Cake Power](https://raw.github.com/cakephp/cakephp/master/lib/Cake/Console/Templates/skel/webroot/img/cake.power.gif)
-=======
-cake-admin
-==========
-
-Admin System using cakephp and bootstrap
->>>>>>> a01179b536ebceadc2e63f3c01d7dbaf462e1b13
