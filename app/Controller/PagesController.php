@@ -74,4 +74,14 @@ class PagesController extends AppController {
 			throw new NotFoundException();
 		}
 	}
+
+  public function admin_dashboard ()
+  {
+
+  }
+
+  public function admin_coming_soon ()
+  {
+
+  }
 }

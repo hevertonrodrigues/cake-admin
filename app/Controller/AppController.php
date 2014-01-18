@@ -32,15 +32,26 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
   public $components = array(
-    'DebugKit.Toolbar' => array(/* array of settings */),
+    //'DebugKit.Toolbar',
     'Session',
     'Auth' => array(
-      'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
-      'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home')
+      'loginRedirect' => array('controller' => 'pages', 'action' => 'dashboard', 'admin' => true ),
+      'logoutRedirect' => array('controller' => 'pages', 'action' => 'display',  'admin' => false)
     )
   );
 
   function beforeFilter() {
     $this->Auth->allow('index', 'view');
+
+    if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {
+      if ( $this->params['action'] != 'admin_login' ) {
+        $this->layout = 'admin_default';
+      } else {
+        $this->layout = 'admin_default_login';
+      }
+    } else {
+      $this->Auth->allow();
+    }
   }
+
 }

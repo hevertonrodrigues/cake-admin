@@ -25,6 +25,36 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+
+
+    Router::connect('/admin', array('controller' => 'users', 'action' => 'login', 'admin' => true));
+    Router::connect('/admin/sair', array('controller' => 'users', 'action' => 'logout', 'admin' => true));
+
+    Router::connect('/admin/dashboard', array('controller' => 'pages', 'action' => 'dashboard', 'admin' => true));
+
+    Router::connect('/admin/institucional/sobre', array('controller' => 'configurations', 'action' => 'about', 'admin' => true));
+    Router::connect('/admin/institucional/mvv', array('controller' => 'pages', 'action' => 'coming_soon', 'admin' => true));
+    Router::connect('/admin/institucional/contato', array('controller' => 'pages', 'action' => 'coming_soon', 'admin' => true));
+
+    Router::connect('/admin/administradores/adicionar', array('controller' => 'users', 'action' => 'add', 'admin' => true));
+    Router::connect('/admin/administradores', array('controller' => 'users', 'action' => 'index', 'admin' => true));
+
+    Router::connect('/admin/usuarios/adicionar', array('controller' => 'pages', 'action' => 'coming_soon', 'admin' => true));
+    Router::connect('/admin/usuarios', array('controller' => 'pages', 'action' => 'coming_soon', 'admin' => true));
+
+
+    Router::connect('/admin/imagens', array('controller' => 'pages', 'action' => 'coming_soon', 'admin' => true));
+
+    Router::connect('/admin/conteudos/adicionar', array('controller' => 'pages', 'action' => 'coming_soon', 'admin' => true));
+    Router::connect('/admin/conteudos', array('controller' => 'pages', 'action' => 'coming_soon', 'admin' => true));
+
+    Router::connect('/admin/produtos/adicionar', array('controller' => 'pages', 'action' => 'coming_soon', 'admin' => true));
+    Router::connect('/admin/produtos', array('controller' => 'pages', 'action' => 'coming_soon', 'admin' => true));
+
+    Router::connect('/admin/mensagens/emails', array('controller' => 'pages', 'action' => 'coming_soon', 'admin' => true));
+    Router::connect('/admin/mensagens/formularios', array('controller' => 'pages', 'action' => 'coming_soon', 'admin' => true));
+
+
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

@@ -12,32 +12,36 @@ class UsersController extends AppController {
   public function beforeFilter()
   {
     parent::beforeFilter();
-    $this->Auth->allow('add', 'logout');
+    $this->Auth->allow( 'admin_login' );
   }
 
-  public function login()
+  public function admin_login()
   {
-    if ( $this->request->is('post') ){
-      if ($this->Auth->login()) {
-        $this->redirect($this->Auth->redirect());
-      } else {
-        $this->Session->setFlash(__('Invalid username or password, try again'));
+    if ( $this->Auth->user() ) {
+        $this->redirect(array('controller' => 'pages', 'action' => 'dashboard', 'admin' => true ) );
+    } else {
+      if ( $this->request->is('post') ){
+        if ($this->Auth->login()) {
+          $this->redirect($this->Auth->redirect());
+        } else {
+          $this->Session->setFlash(__('Invalid username or password, try again'));
+        }
       }
     }
   }
 
-  public function logout()
+  public function admin_logout()
   {
     $this->redirect($this->Auth->logout());
   }
 
-  public function index()
+  public function admin_index()
   {
     $this->User->recursive = 0;
     $this->set('users', $this->paginate());
   }
 
-  public function view($id = null)
+  public function admin_view($id = null)
   {
     $this->User->id = $id;
     if (!$this->User->exists()) {
@@ -46,7 +50,7 @@ class UsersController extends AppController {
     $this->set('user', $this->User->read(null, $id));
   }
 
-  public function add()
+  public function admin_add()
   {
     if ($this->request->is('post')) {
       $this->User->create();
@@ -59,7 +63,7 @@ class UsersController extends AppController {
     }
   }
 
-  public function edit($id = null)
+  public function admin_edit($id = null)
   {
     $this->User->id = $id;
     if (!$this->User->exists()) {
@@ -78,7 +82,7 @@ class UsersController extends AppController {
     }
   }
 
-  public function delete($id = null)
+  public function admin_delete($id = null)
   {
     if (!$this->request->is('post')) {
       throw new MethodNotAllowedException();
